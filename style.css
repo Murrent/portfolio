@@ -1,0 +1,117 @@
+:root {
+    --c1: #2C3333;
+    --c2: #2E4F4F;
+    --c3: #0E8388;
+    --c4: #CBE4DE;
+    --c1t: rgba(44, 51, 51, 0.8);
+    --c2t: rgba(46, 79, 79, 0.5);
+    --c3t: rgba(14, 131, 136, 0.5);
+    --c4t: rgba(203, 228, 222, 0.5);
+    --headerHeight: 100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--c1t);
+    color: var(--c4);
+    height: var(--headerHeight);
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 30px;
+}
+
+.navbarBtn {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 30px;
+    background-color: var(--c2t);
+    padding: 10px;
+    /*border: 3px solid var(--c3);*/
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--c4);
+    transition: background-color 0.1s linear;
+}
+
+.navbarBtn:hover {
+    background-color: var(--c3t);
+}
+
+main {
+    background-color: var(--c2t);
+    color: var(--c4);
+    backdrop-filter: blur(6px);
+    min-height: calc(100vh - var(--headerHeight));
+}
+
+.bg_img {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+}
+
+.projectCards {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: inherit;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.projectCards li a {
+    margin: 20px;
+    font-size: 30px;
+    background-color: var(--c3);
+    padding: 5px;
+    border: 3px solid var(--c4);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--c4);
+    display:block;
+    height: 300px;
+    width: 300px;
+    transition-duration: 0.2s;
+}
+
+.projectCards li a:hover {
+    transition-duration: 0.2s;
+    border-radius: 30px;
+}
+
+footer {
+    background-color: var(--c3);
+    color: var(--c4);
+    height: 300px;
+}
+
+.center {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (min-width: 1080px) {
+    .center {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .center {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

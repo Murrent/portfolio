@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="shortcut icon" href="siteIcon.png">
+    <meta charset="utf-8" />
+    <title>Air hockey game</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+  <div id="startMenu">
+    <div id="gameTitle">AIR HOCKEY</div>
+    <div id="playGame" onclick="startGame()">PLAY GAME</div>
+    <div id="signature">Made by Martin Wickgren Productions</div>
+  </div>
+  <div class="countDownClass">
+      <div id="countDownId">3</div>
+  </div>
+  <img id="questionMark" src="questionmark.png">
+  <div id="divCanvas">
+  <canvas class="scoreBoth" id="scoreP2"></canvas>
+    <canvas id="gameCanvas"></canvas>
+  <canvas class="scoreBoth" id="scoreP1"></canvas>
+  </div>
+  <div id="menuId" class="menu">
+    <div id="start" onclick="startFun()">START</div>
+    <div id="tutorial" onclick="tutorialFun()">HOW TO PLAY</div>
+    <div id="options" onclick="optionsFun()">OPTIONS</div>
+  </div>
+  <div id="tutorialId" class="tutorialMenu">
+    <div id="tutorialBtn">How to play</div>
+    <div id="tutorialImage"></div>
+  </div>
+  <div id="backBtn" onclick="menuButton()">Main menu</div>
+  <input id="drawBtn" value="Draw" onclick="draw()" type="button">
+  <p class="points" id="ability">Ability: None</p>
+  <div class="smallBtns" id="pauseBtn" onclick="pauseFun()"></div>
+  <div class="smallBtns" id="optWheel" onclick="optWheelFun()"></div>
+
+  <div id="optWhole">
+    <div class="optionsMenu" id="optionsId">
+      <p class="points" id="optTitle">Options</p>
+      <p class="points" id="xBtn" onclick="xButton()"></p>
+      <div id="audioDiv">
+        <p class="points" id="volumeText">Sound effects: <span id="volumeValue">50</span></p>
+          <input type="range" min="0" max="100" value="50" id="volumeController" class="slider" onkeydown="volumerControllerFun()">
+        <p class="points" id="musicText">Music: <span id="musicValue">50</span></p>
+          <input type="range" min="0" max="100" value="50" id="musicController" class="slider" onkeydown="musicControllerFun()">
+      </div>
+      <div id="musicMuteBtn" class="muteBtn" onclick="mute2Fun()"></div>
+      <div id="audioMuteBtn" class="muteBtn" onclick="muteFun()"></div>
+    </div>
+  </div>
+  <div id="winnerDiv">
+    <div id="winnerText">The winner is <br><span id="winnerPlayer"></span>!</div>
+  </div>
+
+<script src="game.js"></script>
+<script src="functions.js"></script>
+
+</body>
+</html>

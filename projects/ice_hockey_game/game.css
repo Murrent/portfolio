@@ -1,0 +1,170 @@
+body {margin: 0; padding: 0;}
+html {background-color: green; margin: 0;}
+p {font-size: 2vw; color: white;}
+/*divvar till startsidan*/
+#startMenu {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  justify-content: center;
+  flex-direction: column;
+  background-color: green;
+  z-index: 3;
+  top: 0;
+}
+#startMenu div {
+  font-family: tahoma;
+  color: black;
+  margin: 1vw;
+  transition: 0.2s;
+  padding: 0.5vw;
+  user-select: none;
+}
+  #playGame {
+    font-size: 6vw;
+    border: 0.5vw solid black;
+    border-radius: 1vw;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  #playGame:hover {
+    transition: 0.2s;
+    transform: scale(1.05);
+  }
+  #playGame:active {
+    transition: 0.2s;
+    transform: scale(1);
+  }
+  #gameTitle {
+    font-size: 10vw;
+  }
+  #signature {
+    font-size: 2vw;
+  }
+/*vinst sidan*/
+#winnerDiv {
+  margin: 0;
+  padding: 0;
+  display: none;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  justify-content: center;
+  background-size: 100% 100%;
+  background-color: green;
+  z-index: 3;
+  top: 0;
+}
+  #winnerText {
+    position: absolute;
+    font-size: 10vw;
+    font-family: tahoma;
+    color: black;
+    top: 10vw;
+    user-select: none;
+  }
+  #winnerPlayer {}
+/*poängparagrafer */
+.points {
+  position: absolute;
+  font-family: tahoma;
+  margin-left: 1vw;
+  user-select: none;
+}
+  #ability {
+    top: 5vw;
+  }
+/*spelytan och en div för att ha spelytan i mitten*/
+#gameCanvas {
+  z-index: 0;
+  background-image: url('canvasBG.png');
+  background-size: 100% 100%;
+  width: 50vh;
+  height: 80vh;
+  border: 2vh solid black;
+  border-radius: 4vh;
+  background-color: white;
+}
+#divCanvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh
+}
+/*button för att sluta rensa spelytan*/
+#drawBtn {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  margin-left: 1vw;
+  margin-top: 1vw;
+  font-size: 2.5vw;
+  font-family: tahoma;
+  cursor: pointer;
+  background-color: white;
+  border: 0.2vw solid black;
+  border-radius: 0.75vw;
+  transition: 0.2s;
+  padding: 0.5vw;
+  user-select: none;
+  outline: none;
+  padding-top: 0px;
+  padding-bottom: 0.2vw;
+  transition: 0.2s;
+}
+  #drawBtn:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+  }
+  #drawBtn:active {
+    transition: 0.2s;
+    transform: scale(1);
+  }
+/*nedräknings-divven*/
+.countDownClass {
+  margin: 0;
+  padding: 0;
+  display: none;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  justify-content: center;
+  z-index: 3;
+  top: 0;
+}
+  #countDownId {
+    position: absolute;
+    font-size: 15vw;
+    font-family: tahoma;
+    color: black;
+    user-select: none;
+  }
+
+.scoreBoth {
+  display: flex;
+  position: absolute;
+  width: 50vh;
+  height: 5vh;
+}
+#scoreP1 {
+  bottom: 0;
+  margin-bottom: 1vw;
+}
+#scoreP2 {
+  top: 0;
+  margin-top: 1vw;
+}
+
+#questionMark {
+  position: absolute;
+  display: none;
+}

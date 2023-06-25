@@ -1,0 +1,271 @@
+/*en class till ett antal divvar*/
+.smallBtns {
+  width: 4vw;
+  height: 4vw;
+  background-size: 100% 100%;
+  display: flex;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  font-family: tahoma;
+  position: absolute;
+  margin-right: 1vw;
+  margin-top: 1vw;
+  font-size: 5vw;
+  cursor: pointer;
+  background-color: white;
+  border: 0.2vw solid black;
+  border-radius: 0.75vw;
+  user-select: none;
+  transition: 0.2s;
+}
+  .smallBtns:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+  }
+  .smallBtns:active {
+    transition: 0.2s;
+    transform: scale(1);
+  }
+/*en class för menyns divvar*/
+.menu {
+  display: flex;
+  top: 0;
+  z-index: 2;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-size: 2.5vw;
+}
+  .menu div {
+    font-family: tahoma;
+    cursor: pointer;
+    background-color: white;
+    border: 0.3vw solid black;
+    border-radius: 0.75vw;
+    margin: 1vw;
+    transition: 0.2s;
+    padding: 0.5vw;
+    user-select: none;
+
+  }
+  .menu div:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+  }
+  .menu div:active {
+    transition: 0.2s;
+    transform: scale(1);
+  }
+/*divvar för tutorialmenyn*/
+.tutorialMenu {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  text-align: center;
+  justify-content:  flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: green;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-size: 2.5vw;
+  top: 0;
+}
+  .tutorialMenu div {
+    background-color: white;
+    border: 0.35vw solid black;
+    border-radius: 0.75vw;
+    font-family: tahoma;
+    margin: 2vw;
+    margin-top: 1vw;
+    transition: 0.2s;
+    padding: 0.5vw;
+    user-select: none;
+    padding-top: 0px;
+    padding-bottom: 0.2vw;
+  }
+  #tutorialBtn {
+    border: 0.2vw solid black;
+  }
+  #tutorialImage {
+    margin-top: 0;
+    border-radius: 2vw;
+    background-image: url(tutorial.png);
+    background-size: 100% 100%;
+    width: 70vw;
+    height: 40vw;
+  }
+/*pauseknappens standardbild*/
+#pauseBtn {
+  background-image: url(pause.png);
+}
+/*div för volyminställningar, kryssknapp, titel på options divven, sliders för
+volymnivå och muteknappar*/
+#optWhole {
+  display: none;
+  top: 0;
+  z-index: 5;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.optionsMenu {
+  display: flex;
+  z-index: 5;
+  position: absolute;
+  text-align: center;
+  background-color: white;
+  border: 0.35vw solid black;
+  border-radius: 1vw;
+  padding: 0;
+  height: 20vw;
+  width: 20vw;
+}
+#optWheel {
+  display: none;
+  background-image: url(optionsWheel.png);
+  margin-right: 6%;
+}
+  .muteBtn {
+    background-image: url(volumeON.png);
+    width: 4vw;
+    height: 4vw;
+    margin-left: 75%;
+    margin-top: 8.4vw;
+    background-size: 100% 100%;
+    font-family: tahoma;
+    position: absolute;
+    cursor: pointer;
+    background-color: white;
+    border: 0.2vw solid black;
+    border-radius: 0.75vw;
+    user-select: none;
+    transition: 0.2s;
+  }
+  .muteBtn:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+  }
+  .muteBtn:active {
+    transition: 0.2s;
+    transform: scale(1);
+  }
+  #volumeValue {
+    font-size: 1.5vw;
+    color: black;
+  }
+  #volumeText {
+    margin-left: 5%;
+    margin-top: 9.3vw;
+    font-size: 1.5vw;
+    color: black;
+  }
+  #volumeController {
+    position: fixed;
+    margin-top: 11.5vw;
+    margin-left: 1%;
+  }
+  #musicValue {
+    font-size: 1.5vw;
+    color: black;
+  }
+  #musicText {
+    margin-left: 5%;
+    margin-top: 15.8vw;
+    font-size: 1.5vw;
+    color: black;
+  }
+  #musicController {
+    position: fixed;
+    margin-top: 18vw;
+    margin-left: 1%;
+  }
+  #musicMuteBtn {
+    margin-top: 15vw;
+  }
+  .slider {
+    -webkit-appearance: none;
+    width: 13vw;
+    height: 1vw;
+    background-color: white;
+    border: 0.2vw solid black;
+    opacity: 0.8;
+    outline: none;
+    cursor: e-resize;
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0.5vw;
+    height: 1vw;
+    background-color: blue;
+    cursor: e-resize;
+  }
+  #optTitle {
+    color: black;
+    font-size: 3vw;
+    margin-left: 5%;
+    margin-top: 1vw;
+  }
+  #xBtn {
+    background-image: url("x.png");
+    background-size: 100% 100%;
+    width: 4vw;
+    height: 4vw;
+    margin-left: 75%;
+    margin-top: 0.5vw;
+    cursor: pointer;
+    background-color: white;
+    border: 0.2vw solid black;
+    border-radius: 0.75vw;
+    transition: 0.2s;
+  }
+  #xBtn:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+  }
+  #xBtn:active {
+    transition: 0.2s;
+    transform: scale(1);
+  }
+/*div som tar dig till menyn vid knapptryck*/
+#backBtn {
+  display: none;
+  top: 0;
+  z-index: 2;
+  position: absolute;
+  font-family: tahoma;
+  margin-left: 9vw;
+  margin-top: 1vw;
+  font-size: 2.5vw;
+  cursor: pointer;
+  background-color: white;
+  border: 0.2vw solid black;
+  border-radius: 0.75vw;
+  padding: 0.5vw;
+  user-select: none;
+  padding-top: 0px;
+  padding-bottom: 0.2vw;
+  transition: 0.2s;
+}
+  #backBtn:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+  }
+  #backBtn:active {
+    transition: 0.2s;
+    transform: scale(1);
+  }

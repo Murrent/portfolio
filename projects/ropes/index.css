@@ -1,0 +1,14 @@
+html {background-color: gray}
+* {margin: 0; padding: 0;}
+#cDiv {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+#canvas {
+  border: 1px solid black;
+  background-color: lightgray;
+}
