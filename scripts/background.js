@@ -21,6 +21,7 @@ class V2 {
     }
 }
 
+let mouseTrigger = false;
 let mouse = new V2(0, 0);
 let mouseOnPage = new V2(0, 0);
 
@@ -39,14 +40,22 @@ for (let i = 0; i < trailParticles.length; i++) {
 
 let rainParticles = new Array(1000);
 for (let i = 0; i < rainParticles.length; i++) {
-    rainParticles[i] = new Particle({x: Math.random() * width, y: Math.random() * height}, {x: 5 + Math.random()*10, y: 10+ Math.random()*10});
+    rainParticles[i] = new Particle({x: Math.random() * width, y: Math.random() * height}, {
+        x: 5 + Math.random() * 10,
+        y: 10 + Math.random() * 10
+    });
 }
 
 document.addEventListener("mousemove", mouseMove);
+document.addEventListener("mouseup", mouseup);
 
 function mouseMove(event) {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
+}
+
+function mouseup() {
+    mouseTrigger = true;
 }
 
 const frameLength = 1000 / 60;
@@ -108,14 +117,12 @@ function update() {
 
         if (particle.pos.x > width) {
             particle.pos.x = 0;
-        }
-        else if (particle.pos.x < 0) {
+        } else if (particle.pos.x < 0) {
             particle.pos.x = width;
         }
         if (particle.pos.y > height) {
             particle.pos.y = 0;
-        }
-        else if (particle.pos.y < 0) {
+        } else if (particle.pos.y < 0) {
             particle.pos.y = height;
         }
     }
@@ -137,41 +144,48 @@ class Line {
         this.y2 = y2;
     }
 }
+
 class Vec {
     constructor(x, y) {
         this.x = x;
         this.y = y;
     }
 }
-class RopePart{
+
+class RopePart {
     constructor(x, y) {
         this.pos = new Vec(x, y);
         this.btm = new Vec(x + 30, y + 30);
-        this.prev = new Vec(0,0);
+        this.prev = new Vec(0, 0);
         this.vel = new Vec(0, 0);
         this.stuck = false;
     }
 }
 
-function scale(a, scalar){return new Vec( a.x*scalar, a.y*scalar );}
+function scale(a, scalar) {
+    return new Vec(a.x * scalar, a.y * scalar);
+}
+
 let rope = [];
 let lines = [];
 c.strokeStyle = "blue";
 c.lineWidth = 10;
 
-rope.push(new RopePart(0, 0));
+let ropePicked = false;
+
+rope.push(new RopePart(50, 250));
 rope[0].stuck = true;
-rope.push(new RopePart(500, 140));
-rope.push(new RopePart(300, 180));
-rope.push(new RopePart(100, 220));
-rope.push(new RopePart(100, 100));
-rope.push(new RopePart(100, 400));
-rope.push(new RopePart(200, 300));
-rope.push(new RopePart(250, 310));
-rope.push(new RopePart(100, 330));
-rope.push(new RopePart(300, 400));
-rope.push(new RopePart(300, 180));
-rope.push(new RopePart(200, 400));
+rope.push(new RopePart(60, 375));
+rope.push(new RopePart(69, 458));
+rope.push(new RopePart(80, 530));
+rope.push(new RopePart(93, 590));
+rope.push(new RopePart(113, 637));
+rope.push(new RopePart(147, 636));
+rope.push(new RopePart(164, 607));
+rope.push(new RopePart(175, 564));
+rope.push(new RopePart(185, 511));
+rope.push(new RopePart(194, 446));
+rope.push(new RopePart(190, 446));
 rope.push(new RopePart(100, 100));
 
 function lightning(x, y, power) {
@@ -181,10 +195,9 @@ function lightning(x, y, power) {
         let i;
         for (i = 0; i < 50; i++) {
             if (i === 0) {
-                lines.push(new Line(x, y, x+Math.random()*30-15, y-15));
-            }
-            else {
-                lines.push(new Line(lines[i-1].x2, lines[i-1].y2, lines[i-1].x2+Math.random()*30-15, lines[i-1].y2-15));
+                lines.push(new Line(x, y, x + Math.random() * 30 - 15, y - 15));
+            } else {
+                lines.push(new Line(lines[i - 1].x2, lines[i - 1].y2, lines[i - 1].x2 + Math.random() * 30 - 15, lines[i - 1].y2 - 15));
             }
         }
         for (i = 0; i < lines.length; i++) {
@@ -201,9 +214,29 @@ function lightning(x, y, power) {
 
     }
 }
+
 function draw() {
+
+    if (!ropePicked) {
+        const r = rope[0];
+        c.font = "20px Verdana";
+        c.fillStyle = "rgba(255,255,255,0.25)";
+        c.fillText("Click me!", r.pos.x - 38, r.pos.y - 20);
+        const diffX = mouseOnPage.x - r.pos.x;
+        const diffY = mouseOnPage.y - r.pos.y;
+        const distSqr = diffX * diffX + diffY * diffY;
+        if (distSqr < 20 * 20) {
+            c.strokeStyle = "blue";
+            c.lineWidth = "5";
+            c.beginPath();
+            c.arc(r.pos.x, r.pos.y, 20, 0, Math.PI * 2);
+            c.stroke();
+            c.closePath();
+        }
+    }
+
     c.fillStyle = "blue";
-    for (let i = 0; i < rope.length-1; i++) {
+    for (let i = 0; i < rope.length - 1; i++) {
         let rop = rope[i];
         c.beginPath();
         c.arc(rop.pos.x, rop.pos.y, 5, 0, Math.PI * 2);
@@ -211,18 +244,18 @@ function draw() {
         c.closePath();
     }
     c.lineWidth = 10;
-    for (let i = 1; i < rope.length-1; i++) {
+    for (let i = 1; i < rope.length - 1; i++) {
         let rop = rope[i];
         c.beginPath();
         c.moveTo(rop.pos.x, rop.pos.y);
-        c.lineTo(rope[i-1].pos.x, rope[i-1].pos.y);
+        c.lineTo(rope[i - 1].pos.x, rope[i - 1].pos.y);
         c.strokeStyle = "blue";
         c.stroke();
         c.closePath();
     }
 
     c.beginPath();
-    c.arc(rope[rope.length-2].pos.x, rope[rope.length-2].pos.y, 10, 0, Math.PI * 2);
+    c.arc(rope[rope.length - 2].pos.x, rope[rope.length - 2].pos.y, 10, 0, Math.PI * 2);
     c.fill();
     c.closePath();
 }
@@ -230,17 +263,31 @@ function draw() {
 function maffs() {
     let rop;
     let i;
-    rope[0].pos.x = mouseOnPage.x;
-    rope[0].pos.y = mouseOnPage.y;
+    if (ropePicked) {
+        rope[0].pos.x = mouseOnPage.x;
+        rope[0].pos.y = mouseOnPage.y;
+        if (mouseTrigger) {
+            mouseTrigger = false;
+            ropePicked = false;
+        }
+    } else if (mouseTrigger) {
+        mouseTrigger = false;
+        const r = rope[0];
+        const diffX = mouseOnPage.x - r.pos.x;
+        const diffY = mouseOnPage.y - r.pos.y;
+        const distSqr = diffX * diffX + diffY * diffY;
+        if (distSqr < 20 * 20) {
+            ropePicked = true;
+        }
+    }
 
-
-    for (i = 0; i < rope.length-1; i++) {
+    for (i = 0; i < rope.length - 1; i++) {
         rop = rope[i];
         const btmAngle = new Vec((rope[i + 1].pos.x - rop.pos.x), (rope[i + 1].pos.y - rop.pos.y));
         const hyp = Math.sqrt(btmAngle.x * btmAngle.x + btmAngle.y * btmAngle.y);
         rop.btm = new Vec(rop.pos.x + (btmAngle.x / hyp) * 30, rop.pos.y + (btmAngle.y / hyp) * 30);
     }
-    for (i = 1; i < rope.length-2; i++) {
+    for (i = 1; i < rope.length - 2; i++) {
         rop = rope[i];
         rop.prev.x = rop.pos.x;
         rop.prev.y = rop.pos.y;
@@ -250,7 +297,7 @@ function maffs() {
             rop.vel.x += newVel1.x;
             rop.vel.y += newVel1.y;
         }
-        if (i < rope.length-2) {
+        if (i < rope.length - 2) {
             const newVel2 = new Vec((rope[i + 1].pos.x - rop.btm.x) / 10, (rope[i + 1].pos.y - rop.btm.y) / 10);
             rop.vel.x += newVel2.x;
             rop.vel.y += newVel2.y;
