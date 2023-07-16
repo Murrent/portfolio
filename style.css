@@ -68,6 +68,7 @@ header nav ul {
     margin-right: 10px;
     margin-left: 10px;
     font-size: 30px;
+    font-family: "Consolas", serif;
     background-color: var(--c2t);
     padding: 10px;
     /*border: 3px solid var(--c3);*/
@@ -151,6 +152,7 @@ main {
 .projectCards li a p {
     bottom: 15px;
     position: absolute;
+    font-family: "Consolas", serif;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;

@@ -255,7 +255,7 @@ function draw() {
             c.closePath();
         }
 
-        c.font = "20px Verdana";
+        c.font = "20px Consolas";
         c.fillStyle = "rgba(255,255,255,0.25)";
         c.fillText("Click me!", r.pos.x - 38, r.pos.y - 20);
     }
