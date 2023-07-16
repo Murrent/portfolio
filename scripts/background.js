@@ -173,20 +173,21 @@ c.lineWidth = 10;
 
 let ropePicked = false;
 
-rope.push(new RopePart(50, 250));
-rope[0].stuck = true;
-rope.push(new RopePart(60, 375));
-rope.push(new RopePart(69, 458));
-rope.push(new RopePart(80, 530));
-rope.push(new RopePart(93, 590));
-rope.push(new RopePart(113, 637));
-rope.push(new RopePart(147, 636));
-rope.push(new RopePart(164, 607));
-rope.push(new RopePart(175, 564));
-rope.push(new RopePart(185, 511));
-rope.push(new RopePart(194, 446));
-rope.push(new RopePart(190, 446));
+rope.push(new RopePart(200, 580));
+rope[0].stuck = false;
+rope.push(new RopePart(200, 550));
+rope.push(new RopePart(200, 520));
+rope.push(new RopePart(200, 490));
+rope.push(new RopePart(200, 460));
+rope.push(new RopePart(200, 430));
+rope.push(new RopePart(200, 400));
+rope.push(new RopePart(200, 370));
+rope.push(new RopePart(200, 340));
+rope.push(new RopePart(200, 310));
+rope.push(new RopePart(200, 280));
+rope.push(new RopePart(200, 250));
 rope.push(new RopePart(100, 100));
+rope[11].stuck = true;
 
 function lightning(x, y, power) {
     c.lineWidth = 1;
@@ -216,25 +217,6 @@ function lightning(x, y, power) {
 }
 
 function draw() {
-
-    if (!ropePicked) {
-        const r = rope[0];
-        c.font = "20px Verdana";
-        c.fillStyle = "rgba(255,255,255,0.25)";
-        c.fillText("Click me!", r.pos.x - 38, r.pos.y - 20);
-        const diffX = mouseOnPage.x - r.pos.x;
-        const diffY = mouseOnPage.y - r.pos.y;
-        const distSqr = diffX * diffX + diffY * diffY;
-        if (distSqr < 20 * 20) {
-            c.strokeStyle = "blue";
-            c.lineWidth = "5";
-            c.beginPath();
-            c.arc(r.pos.x, r.pos.y, 20, 0, Math.PI * 2);
-            c.stroke();
-            c.closePath();
-        }
-    }
-
     c.fillStyle = "blue";
     for (let i = 0; i < rope.length - 1; i++) {
         let rop = rope[i];
@@ -258,6 +240,25 @@ function draw() {
     c.arc(rope[rope.length - 2].pos.x, rope[rope.length - 2].pos.y, 10, 0, Math.PI * 2);
     c.fill();
     c.closePath();
+
+    if (!ropePicked) {
+        const r = rope[0];
+        const diffX = mouseOnPage.x - r.pos.x;
+        const diffY = mouseOnPage.y - r.pos.y;
+        const distSqr = diffX * diffX + diffY * diffY;
+        if (distSqr < 20 * 20) {
+            c.strokeStyle = "blue";
+            c.lineWidth = "5";
+            c.beginPath();
+            c.arc(r.pos.x, r.pos.y, 20, 0, Math.PI * 2);
+            c.stroke();
+            c.closePath();
+        }
+
+        c.font = "20px Verdana";
+        c.fillStyle = "rgba(255,255,255,0.25)";
+        c.fillText("Click me!", r.pos.x - 38, r.pos.y - 20);
+    }
 }
 
 function maffs() {
@@ -269,6 +270,7 @@ function maffs() {
         if (mouseTrigger) {
             mouseTrigger = false;
             ropePicked = false;
+            rope[0].stuck = false;
         }
     } else if (mouseTrigger) {
         mouseTrigger = false;
@@ -278,6 +280,7 @@ function maffs() {
         const distSqr = diffX * diffX + diffY * diffY;
         if (distSqr < 20 * 20) {
             ropePicked = true;
+            rope[0].stuck = true;
         }
     }
 
@@ -287,18 +290,23 @@ function maffs() {
         const hyp = Math.sqrt(btmAngle.x * btmAngle.x + btmAngle.y * btmAngle.y);
         rop.btm = new Vec(rop.pos.x + (btmAngle.x / hyp) * 30, rop.pos.y + (btmAngle.y / hyp) * 30);
     }
-    for (i = 1; i < rope.length - 2; i++) {
+    for (i = 0; i < rope.length - 1; i++) {
         rop = rope[i];
+        if (rop.stuck) continue;
         rop.prev.x = rop.pos.x;
         rop.prev.y = rop.pos.y;
-        //console.log(rop.pos);
+
+        // Turbulence
+        rop.vel.x += Math.random() * 0.5;
+        rop.vel.y += Math.random() * 0.1;
+
         if (i > 0) {
-            const newVel1 = new Vec((rope[i - 1].btm.x - rop.pos.x) / 10, (rope[i - 1].btm.y - rop.pos.y) / 10);
+            const newVel1 = new Vec((rope[i - 1].btm.x - rop.pos.x) / 2, (rope[i - 1].btm.y - rop.pos.y) / 2);
             rop.vel.x += newVel1.x;
             rop.vel.y += newVel1.y;
         }
         if (i < rope.length - 2) {
-            const newVel2 = new Vec((rope[i + 1].pos.x - rop.btm.x) / 10, (rope[i + 1].pos.y - rop.btm.y) / 10);
+            const newVel2 = new Vec((rope[i + 1].pos.x - rop.btm.x) / 2, (rope[i + 1].pos.y - rop.btm.y) / 2);
             rop.vel.x += newVel2.x;
             rop.vel.y += newVel2.y;
         }
