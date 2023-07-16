@@ -14,6 +14,9 @@ let height = Math.max(body.scrollHeight, body.offsetHeight,
 let width = Math.max(body.scrollWidth, body.offsetWidth,
     html.clientWidth, html.scrollWidth, html.offsetWidth);
 
+
+const marioImg = document.getElementById('marioImg');
+
 class V2 {
     constructor(x, y) {
         this.x = x;
@@ -241,24 +244,38 @@ function draw() {
     c.fill();
     c.closePath();
 
+    const diff = new V2(rope[0].pos.x - rope[1].pos.x, rope[0].pos.y - rope[1].pos.y);
+    const angle = Math.atan2(diff.y, diff.x);
+
+    c.translate(rope[0].pos.x, rope[0].pos.y);
+    c.rotate(angle - Math.PI * 0.5);
+    c.translate(-25, -25);
+    c.beginPath();
+    c.imageSmoothingEnabled = false;
+    c.drawImage(marioImg, 0, 0, 16, 16, 0, 0, 50, 50);
+    c.closePath();
+
     if (!ropePicked) {
         const r = rope[0];
         const diffX = mouseOnPage.x - r.pos.x;
         const diffY = mouseOnPage.y - r.pos.y;
         const distSqr = diffX * diffX + diffY * diffY;
         if (distSqr < 20 * 20) {
-            c.strokeStyle = "blue";
+            c.strokeStyle = "white";
             c.lineWidth = "5";
             c.beginPath();
-            c.arc(r.pos.x, r.pos.y, 20, 0, Math.PI * 2);
+            c.arc(25, 25, 25, 0, Math.PI * 2);
             c.stroke();
             c.closePath();
         }
 
         c.font = "20px Consolas";
         c.fillStyle = "rgba(255,255,255,0.25)";
-        c.fillText("Click me!", r.pos.x - 38, r.pos.y - 20);
+        c.fillText("^", + 19, + 67);
+        c.fillText("|", + 19, + 72);
+        c.fillText("Click me!", - 19, + 95);
     }
+    c.resetTransform();
 }
 
 function maffs() {

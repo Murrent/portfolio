@@ -17,20 +17,22 @@
 
 body {
     background-color: var(--c1);
-    height:100%; /* force the BODY element to match the height of the HTML element */
+    height: 100%; /* force the BODY element to match the height of the HTML element */
 }
-html{
-    min-height:100%;/* make sure it is at least as tall as the viewport */
-    position:relative;
+
+html {
+    min-height: 100%; /* make sure it is at least as tall as the viewport */
+    position: relative;
 }
-#bgDiv{
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    overflow:hidden;
-    z-index:-1; /* Remove this line if it's not going to be a background! */
+
+#bgDiv {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: -1; /* Remove this line if it's not going to be a background! */
 }
 
 #bgCanvas {
@@ -55,7 +57,6 @@ header nav {
 }
 
 
-
 header nav ul {
     list-style-type: none;
     display: flex;
@@ -71,15 +72,20 @@ header nav ul {
     font-family: "Consolas", serif;
     background-color: var(--c2t);
     padding: 10px;
-    /*border: 3px solid var(--c3);*/
+    border: 1px solid var(--c3t);
     border-radius: 10px;
     text-decoration: none;
     color: var(--c4);
-    transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear,
+    border-bottom-color 0.1s linear,
+    border-top-color 0.1s linear,
+    border-left-color 0.1s linear,
+    border-right-color 0.1s linear;
 }
 
 .navbarBtn:hover {
-    background-color: var(--c3t);
+    background-color: var(--c1t);
+    border-color: black;
 }
 
 .headerLink {
@@ -88,20 +94,24 @@ header nav ul {
     font-size: 20px;
     background-color: var(--c2t);
     padding: 5px;
-    /*border: 3px solid var(--c3);*/
+    border: 1px solid var(--c3t);
     border-radius: 5px;
     text-decoration: none;
     color: var(--c4);
-    transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear,
+    border-bottom-color 0.1s linear,
+    border-top-color 0.1s linear,
+    border-left-color 0.1s linear,
+    border-right-color 0.1s linear;
 }
 
 .headerLink:hover {
-    background-color: var(--c3t);
+    background-color: var(--c1t);
+    border-color: black;
 }
 
 main {
     margin-top: var(--headerHeight);
-    /*background-color: var(--c1);*/
     color: var(--c4);
     min-height: calc(100vh - var(--headerHeight));
 }
@@ -119,75 +129,132 @@ main {
     max-width: 2560px;
 }
 
-.projectCards {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: inherit;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.projectCards li a {
-    margin: 20px;
-    font-size: 30px;
-    background-color: var(--c3t);
-    backdrop-filter: blur(6px);
-    border: 1px solid var(--c3);
-    border-radius: 30px;
-    text-decoration: none;
-    color: var(--c4);
-    display: block;
-    height: 300px;
-    width: 300px;
-    overflow: hidden;
-    transition: background-color 0.2s linear,
-    border-bottom-color 0.2s linear,
-    border-top-color 0.2s linear,
-    border-left-color 0.2s linear,
-    border-right-color 0.2s linear;
-    text-align: center;
-}
-
-.projectCards li a p {
-    bottom: 15px;
-    position: absolute;
-    font-family: "Consolas", serif;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.projectsHolder {
+    padding-top: 50px;
+    padding-bottom: 50px;
     width: 100%;
 }
 
-.projectCards li a:hover {
+.projectA {
+    pointer-events: none;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    border-radius: 30px;
+    width: 100%;
+    color: var(--c4);
     background-color: var(--c2t);
+    backdrop-filter: blur(6px);
+    font-family: Consolas, serif;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+
+.projectA > a {
+    pointer-events: auto;
+    position: absolute;
+    border-radius: 30px;
+    border: var(--c3t) 1px solid;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transition: background-color 0.1s linear,
+    border-bottom-color 0.1s linear,
+    border-top-color 0.1s linear,
+    border-left-color 0.1s linear,
+    border-right-color 0.1s linear,
+    filter 0.1s ease;
+}
+
+.projectA > a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: black;
+    filter: brightness(1);
+}
+
+.projectA > img {
+    margin: 10px;
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    width: 30%;
+    height: 25%;
+    border-radius: 20px;
+    border: var(--c3t) 1px solid;
+}
+
+.projectA > div {
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+}
+
+.projectText {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.projectText > div {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.projectText > h2 {
+    margin-top: 15px;
+}
+
+.projectText > div > img {
+    height: 48px;
+    margin-left: 10px;
+}
+
+.projectLinks {
+    display: flex;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.projectLinks > a {
+    pointer-events: all;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    color: var(--c4);
+    background-color: var(--c2t);
+    border: var(--c3t) 1px solid;
+    border-radius: 20px;
+    margin: 5px 5px 10px;
+    padding: 10px;
+    transition: background-color 0.1s linear,
+    border-bottom-color 0.1s linear,
+    border-top-color 0.1s linear,
+    border-left-color 0.1s linear,
+    border-right-color 0.1s linear;
+}
+
+.projectLinks > a:hover {
+    background-color: var(--c1t);
     border-color: black;
 }
-.projectCards li a img {
-    transition: filter 0.2s ease,
-    width 0.2s ease,
-    height 0.2s ease,
-    margin-left 0.2s ease,
-    margin-top 0.2s ease;
-}
-
-.projectCards li a:hover > img {
-    filter: brightness(0.75);
-    width: 105%;
-    height: 85%;
-    margin-left: -2.5%;
-    margin-top: -5%;
-}
-
 
 footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: Consolas, serif;
     background-color: var(--c1t);
     color: var(--c4);
     backdrop-filter: blur(6px);
-    height: 300px;
+    height: 200px;
 }
 
 .center {
