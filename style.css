@@ -7,12 +7,43 @@
     --c2t: rgba(46, 79, 79, 0.5);
     --c3t: rgba(14, 131, 136, 0.5);
     --c4t: rgba(203, 228, 222, 0.5);
-    --headerHeight: 100px;
+    --headerHeight: 120px;
+    --headerBtn: 12px;
+    --headerBtnBorder: 12px;
+    --headerBtnFontSize: 36px;
+    --headerLink: 6px;
+    --headerLinkBorder: 6px;
+    --headerLinkFontSize: 24px;
+    --projectPadding: 36px;
+    --projectBorder: 36px;
+    --projectInnerBorder: 24px;
+    --projectBorderMargin: 12px;
+    --projectBorderMarginHalf: 6px;
+    --projectToolIcon: 57px;
+    --projectTimeFrame: 34px;
+    --footerHeight: 240px;
+
+    --h1FontSize: 48px;
+    --h2FontSize: 24px;
+    --pFontSize: 24px;
+    --projectLinkText: 24px;
 }
 
 * {
     margin: 0;
     padding: 0;
+}
+
+h1 {
+    font-size: var(--h1FontSize);
+}
+
+p {
+    font-size: var(--pFontSize);
+}
+
+h2 {
+    font-size: var(--h2FontSize);
 }
 
 body {
@@ -56,24 +87,23 @@ header nav {
     justify-content: space-between;
 }
 
-
 header nav ul {
     list-style-type: none;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 30px;
+    padding-top: var(--headerBtnFontSize);
 }
 
 .navbarBtn {
-    margin-right: 10px;
-    margin-left: 10px;
-    font-size: 30px;
+    margin-right: var(--headerBtn);
+    margin-left: var(--headerBtn);
+    font-size: var(--headerBtnFontSize);
     font-family: "Consolas", serif;
     background-color: var(--c2t);
-    padding: 10px;
+    padding: var(--headerBtn);
     border: 1px solid var(--c3t);
-    border-radius: 10px;
+    border-radius: var(--headerBtnBorder);
     text-decoration: none;
     color: var(--c4);
     transition: background-color 0.1s linear,
@@ -89,13 +119,13 @@ header nav ul {
 }
 
 .headerLink {
-    margin-right: 10px;
-    margin-left: 10px;
-    font-size: 20px;
+    margin-right: var(--headerLink);
+    margin-left: var(--headerLink);
+    font-size: var(--headerLinkFontSize);
     background-color: var(--c2t);
-    padding: 5px;
+    padding: var(--headerLink);
     border: 1px solid var(--c3t);
-    border-radius: 5px;
+    border-radius: var(--headerLinkBorder);
     text-decoration: none;
     color: var(--c4);
     transition: background-color 0.1s linear,
@@ -130,8 +160,8 @@ main {
 }
 
 .projectsHolder {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: var(--projectPadding);
+    padding-bottom: var(--projectPadding);
     width: 100%;
 }
 
@@ -140,14 +170,13 @@ main {
     position: relative;
     display: flex;
     flex-direction: row;
-    margin-bottom: 30px;
-    border-radius: 30px;
+    margin-bottom: var(--projectPadding);
+    border-radius: var(--projectBorder);
     width: 100%;
     color: var(--c4);
     background-color: var(--c2t);
     backdrop-filter: blur(6px);
     font-family: Consolas, serif;
-    font-size: 20px;
     text-decoration: none;
 }
 
@@ -155,7 +184,7 @@ main {
 .projectA > a {
     pointer-events: auto;
     position: absolute;
-    border-radius: 30px;
+    border-radius: var(--projectBorder);
     border: var(--c3t) 1px solid;
     left: 0;
     top: 0;
@@ -176,53 +205,61 @@ main {
 }
 
 .projectA > img {
-    margin: 10px;
+    order: 0;
+    margin: var(--projectBorderMargin);
     flex-shrink: 0; /* Prevent the image from shrinking */
-    width: 30%;
-    height: 25%;
-    border-radius: 20px;
+    width: 36%;
+    height: 30%;
+    border-radius: var(--projectInnerBorder);
     border: var(--c3t) 1px solid;
 }
 
 .projectA > div {
+    order: 0;
     display: flex;
     flex-direction: column;
     bottom: 0;
     justify-content: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: var(--projectBorderMargin);
+    margin-right: var(--projectBorderMargin);
     pointer-events: none;
     position: relative;
     z-index: 1;
 }
 
 .projectText {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: var(--projectBorderMargin);
+    margin-right: var(--projectBorderMargin);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
-.projectText > div {
+.projectText > div > div {
     display: flex;
     justify-content: center;
-    margin: 10px;
+    margin: var(--projectBorderMargin);
 }
 
-.projectText > h2 {
-    margin-top: 15px;
+.projectText > div > div > img {
+    height: var(--projectToolIcon);
+    margin-left: var(--projectBorderMargin);
 }
 
-.projectText > div > img {
-    height: 48px;
-    margin-left: 10px;
+h2 {
+    font-size: var(--projectTimeFrame);
 }
 
 .projectLinks {
     display: flex;
-    margin-left: -5px;
-    margin-right: -5px;
+    margin-left: calc(var(--projectBorderMarginHalf) * -1);
+    margin-right: calc(var(--projectBorderMarginHalf) * -1);
 }
 
 .projectLinks > a {
+    font-size: var(--projectLinkText);
     pointer-events: all;
     text-align: center;
     width: 100%;
@@ -230,9 +267,9 @@ main {
     color: var(--c4);
     background-color: var(--c2t);
     border: var(--c3t) 1px solid;
-    border-radius: 20px;
-    margin: 5px 5px 10px;
-    padding: 10px;
+    border-radius: var(--projectInnerBorder);
+    margin: var(--projectBorderMarginHalf) var(--projectBorderMarginHalf) var(--projectBorderMargin);
+    padding: var(--projectBorderMargin);
     transition: background-color 0.1s linear,
     border-bottom-color 0.1s linear,
     border-top-color 0.1s linear,
@@ -254,27 +291,133 @@ footer {
     background-color: var(--c1t);
     color: var(--c4);
     backdrop-filter: blur(6px);
-    height: 200px;
+    height: var(--footerHeight);
 }
 
 .center {
-    width: auto;
+    width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 
-@media only screen and (min-width: 1080px) {
+@media only screen and (max-width: 2000px) {
     .center {
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
+        width: 1000px;
+    }
+
+    :root {
+        --headerHeight: 100px;
+        --headerBtn: 10px;
+        --headerBtnBorder: 10px;
+        --headerBtnFontSize: 30px;
+        --headerLink: 5px;
+        --headerLinkBorder: 5px;
+        --headerLinkFontSize: 20px;
+        --projectPadding: 30px;
+        --projectBorder: 30px;
+        --projectInnerBorder: 20px;
+        --projectBorderMargin: 10px;
+        --projectBorderMarginHalf: 5px;
+        --projectToolIcon: 48px;
+        --projectTimeFrame: 28px;
+        --footerHeight: 200px;
+
+        --h1FontSize: 40px;
+        --h2FontSize: 20px;
+        --pFontSize: 20px;
+        --projectLinkText: 20px;
     }
 }
 
-@media only screen and (min-width: 1500px) {
+
+@media only screen and (max-width: 1200px) {
     .center {
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
+        width: calc(100% - var(--projectPadding) * 2);
+    }
+
+    .projectA {
+        flex-direction: column;
+    }
+
+    .projectA > div {
+        order: 1;
+    }
+
+    .projectA > img {
+        width: auto;
+        height: auto;
+        order: 2;
+    }
+
+    .projectLinks {
+        flex-flow: wrap;
+    }
+
+    header > nav {
+        flex-direction: column;
+    }
+
+    header > nav > ul {
+        margin-left: 30px;
+    }
+
+    .navbarBtn {
+        margin-left: 0;
+    }
+
+    .headerLink {
+        margin-left: 0;
+    }
+
+    :root {
+        --headerHeight: 250px;
+        --headerBtn: 20px;
+        --headerBtnBorder: 30px;
+        --headerBtnFontSize: 50px;
+        --headerLink: 10px;
+        --headerLinkBorder: 20px;
+        --headerLinkFontSize: 50px;
+        --projectPadding: 30px;
+        --projectBorder: 90px;
+        --projectInnerBorder: 60px;
+        --projectBorderMargin: 30px;
+        --projectBorderMarginHalf: 15px;
+        --projectToolIcon: 72px;
+        --projectTimeFrame: 42px;
+        --footerHeight: 200px;
+
+        --h1FontSize: 60px;
+        --h2FontSize: 20px;
+        --pFontSize: 40px;
+        --projectLinkText: 40px;
+    }
+}
+
+@media only screen and (min-width: 3000px) {
+    .center {
+        width: 2000px;
+    }
+
+    :root {
+        --headerHeight: 200px;
+        --headerBtn: 20px;
+        --headerBtnBorder: 20px;
+        --headerBtnFontSize: 60px;
+        --headerLink: 10px;
+        --headerLinkBorder: 10px;
+        --headerLinkFontSize: 40px;
+        --projectPadding: 60px;
+        --projectBorder: 60px;
+        --projectInnerBorder: 40px;
+        --projectBorderMargin: 20px;
+        --projectBorderMarginHalf: 10px;
+        --projectToolIcon: 96px;
+        --projectTimeFrame: 56px;
+        --footerHeight: 400px;
+
+        --h1FontSize: 80px;
+        --h2FontSize: 40px;
+        --pFontSize: 40px;
+        --projectLinkText: 40px;
     }
 }
