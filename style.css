@@ -358,15 +358,17 @@ footer {
     }
 
     header > nav > ul {
-        margin-left: 30px;
+        display: flex;
+        justify-content: space-evenly;
     }
-
     .navbarBtn {
         margin-left: 0;
+        margin-right: 0;
     }
 
     .headerLink {
         margin-left: 0;
+        margin-right: 0;
     }
 
     :root {
