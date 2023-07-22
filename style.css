@@ -214,6 +214,16 @@ main {
     border: var(--c3t) 1px solid;
 }
 
+.projectA > video {
+    order: 0;
+    margin: var(--projectBorderMargin);
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    width: 36%;
+    height: 30%;
+    border-radius: var(--projectInnerBorder);
+    border: var(--c3t) 1px solid;
+}
+
 .projectA > div {
     order: 0;
     display: flex;
@@ -344,6 +354,12 @@ footer {
     }
 
     .projectA > img {
+        width: auto;
+        height: auto;
+        order: 2;
+    }
+
+    .projectA > video {
         width: auto;
         height: auto;
         order: 2;
