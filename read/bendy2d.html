@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bendy2D</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../img/mario.png">
+</head>
+<body>
+
+<div id="bgDiv">
+    <canvas id="bgCanvas"></canvas>
+</div>
+
+<header>
+    <nav class="center">
+        <ul>
+            <li><a class="navbarBtn" href="../index.html">Projects</a></li>
+            <li><a class="navbarBtn" href="../about/index.html">About me</a></li>
+            <li><a class="navbarBtn" href="../contact/index.html">Contact</a></li>
+        </ul>
+        <ul>
+            <li><a class="headerLink" target="_blank" href="https://github.com/Murrent">GitHub</a></li>
+            <li><a class="headerLink" target="_blank" href="https://www.linkedin.com/in/martin-vickgren-763b6922b/">LinkedIn</a>
+            </li>
+            <li><a class="headerLink" target="_blank" href="https://murrent.itch.io/">Itch.io</a></li>
+            <li><a class="headerLink" target="_blank" href="https://www.youtube.com/@murrent">Youtube</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="center">
+    <div class="readHolder">
+        <div class="readSection">
+            <div>
+                <div class="projectText">
+                    <div>
+                        <div>
+                            <h1 class="largeHeader">Bendy2D</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="readSection">
+            <div>
+                <div class="projectText">
+                    <div>
+                        <p>A homegrown softbody physics engine written in Rust, the main purpose of this engine is to
+                            solve
+                            collisions between multiple soft polygons. This project was a part of my bachelor’s
+                            thesis.</p>
+                    </div>
+                    <h2 class="timeFrameText">Timeframe: 10 weeks in 2023</h2>
+                </div>
+                <div class="projectLinks">
+                    <a href="https://github.com/Murrent/bendy2d" target="_blank">Repository</a>
+                    <a href="https://crates.io/crates/bendy2d" target="_blank">Crate</a>
+                    <a href="https://youtu.be/3n4-DHQ_Vns" target="_blank">Video</a>
+                </div>
+            </div>
+            <!--            <img src="img/Bendy2DThumbnail.gif">-->
+            <video src="../img/Bendy2DThumbnail.mp4" autoplay loop muted></video>
+        </div>
+        <div class="readSection">
+            <div>
+                <div class="projectText">
+                    <div>
+                        <div>
+                            <h1>Real-Time Soft Body Physics Engine for Enhanced Convex Polygon Dynamics</h1>
+                        </div>
+                        <h2>(My bachelors thesis)</h2>
+                        <br>
+                    </div>
+                </div>
+                <div class="projectLinks">
+                    <a href="https://urn.kb.se/resolve?urn=urn:nbn:se:oru:diva-106771" target="_blank">Permanent
+                        link</a>
+                    <a href="https://oru.diva-portal.org/smash/get/diva2:1778725/FULLTEXT01.pdf" target="_blank">Fulltext</a>
+                </div>
+            </div>
+        </div>
+        <div class="readSection">
+            <div>
+                <div class="projectText">
+                    <div>
+                        <h2>Abstract</h2>
+                        <br>
+                        <p>This thesis covers the development process of implementation, and evaluation of a soft-body
+                            physics engine for convex polygon objects. The main feature is implementation of a
+                            dynamic polygon collider that represents a polygons shape correctly, while still being able
+                            to collide with other objects in the simulation. Objects are able to deform both temporarily
+                            and permanently using springs with distance constraints. Pressure simulation is also
+                            implemented to simulate inflated polygons. The physics bodies does not feature friction
+                            between objects, only friction against a static boundary of the simulation. The engine is
+                            then evaluated in order to determine if it can run in real-time which is one of the goals.
+                            When it comes to the simulation, Verlet-integration will be used for updating the positions
+                            of particles, and every polygon will be built using these particles, and combined
+                            using certain constraints to make the particles act as one combined object. The main problem
+                            that will be solved is the interpenetration solver, which ensures that polygons do not
+                            overlap, and two formulas will be combined to solve this problem. The collision detection
+                            method uses line intersections to determine if objects are overlapping, this method ended
+                            up being quite expensive for polygons with a lot of vertices. One optimization technique
+                            is implemented which is axis-aligned bounding boxes around objects which improved
+                            performance significantly, which also makes the engine more viable for real-time
+                            simulations. The physics engine in this report is deterministic using a fixed time-step,
+                            dynamic time-step is not tested. The engine also only supports discrete collision
+                            detection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="center">
+        <p>murrents@gmail.com</p>
+        <br>
+        <p>(c) 2023 Murrent. All Rights Reserved.</p>
+    </div>
+</footer>
+<img hidden="hidden" id="marioImg" src="../img/mario.png" alt="Mario">
+<script src="../scripts/background.js"></script>
+</body>
+</html>

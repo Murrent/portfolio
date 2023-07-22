@@ -24,9 +24,10 @@
     --footerHeight: 240px;
 
     --h1FontSize: 48px;
-    --h2FontSize: 24px;
+    --h2FontSize: 40px;
     --pFontSize: 24px;
     --projectLinkText: 24px;
+    --largeHeaderFontSize: 60px;
 }
 
 * {
@@ -36,6 +37,11 @@
 
 h1 {
     font-size: var(--h1FontSize);
+    text-align: center;
+}
+
+.largeHeader {
+    font-size: var(--largeHeaderFontSize);
 }
 
 p {
@@ -44,6 +50,7 @@ p {
 
 h2 {
     font-size: var(--h2FontSize);
+    text-align: center;
 }
 
 body {
@@ -63,7 +70,7 @@ html {
     left: 0;
     right: 0;
     overflow: hidden;
-    z-index: -1; /* Remove this line if it's not going to be a background! */
+    z-index: -1;
 }
 
 #bgCanvas {
@@ -146,17 +153,8 @@ main {
     min-height: calc(100vh - var(--headerHeight));
 }
 
-.bg_img {
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.bg_img > img {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    max-width: 2560px;
+main p {
+    text-align: justify;
 }
 
 .projectsHolder {
@@ -234,6 +232,7 @@ main {
     margin-right: var(--projectBorderMargin);
     pointer-events: none;
     position: relative;
+    width: 100%;
     z-index: 1;
 }
 
@@ -258,7 +257,7 @@ main {
     margin-left: var(--projectBorderMargin);
 }
 
-h2 {
+.timeFrameText {
     font-size: var(--projectTimeFrame);
 }
 
@@ -290,6 +289,62 @@ h2 {
 .projectLinks > a:hover {
     background-color: var(--c1t);
     border-color: black;
+}
+
+.readHolder {
+    margin-bottom: var(--projectPadding);
+    width: 100%;
+    color: var(--c4);
+    background-color: var(--c2t);
+    border-radius: var(--projectBorder);
+    backdrop-filter: blur(6px);
+    font-family: Consolas, serif;
+    border: var(--c3t) 1px solid;
+}
+
+.readHolder {
+    margin-top: calc(var(--projectPadding) + var(--headerHeight));
+}
+
+.readSection {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: var(--projectBorderMargin);
+}
+
+.readSection > img {
+    order: 0;
+    margin: var(--projectBorderMargin);
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    width: 36%;
+    height: 30%;
+    border-radius: var(--projectInnerBorder);
+    border: var(--c3t) 1px solid;
+}
+
+.readSection > video {
+    order: 0;
+    margin: var(--projectBorderMargin);
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    width: 36%;
+    height: 30%;
+    border-radius: var(--projectInnerBorder);
+    border: var(--c3t) 1px solid;
+}
+
+.readSection > div {
+    order: 0;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    justify-content: space-between;
+    margin-left: var(--projectBorderMargin);
+    margin-right: var(--projectBorderMargin);
+    position: relative;
+    width: 100%;
+    z-index: 1;
 }
 
 footer {
@@ -333,9 +388,10 @@ footer {
         --footerHeight: 200px;
 
         --h1FontSize: 40px;
-        --h2FontSize: 20px;
+        --h2FontSize: 33px;
         --pFontSize: 20px;
         --projectLinkText: 20px;
+        --largeHeaderFontSize: 50px;
     }
 }
 
@@ -350,6 +406,7 @@ footer {
     }
 
     .projectA > div {
+        width: auto;
         order: 1;
     }
 
@@ -369,6 +426,11 @@ footer {
         flex-flow: wrap;
     }
 
+    .timeFrameText {
+        margin-top: 4vw;
+        margin-bottom: 4vw;
+    }
+
     header > nav {
         flex-direction: column;
     }
@@ -377,6 +439,7 @@ footer {
         display: flex;
         justify-content: space-evenly;
     }
+
     .navbarBtn {
         margin-left: 0;
         margin-right: 0;
@@ -387,27 +450,49 @@ footer {
         margin-right: 0;
     }
 
-    :root {
-        --headerHeight: 250px;
-        --headerBtn: 20px;
-        --headerBtnBorder: 30px;
-        --headerBtnFontSize: 50px;
-        --headerLink: 10px;
-        --headerLinkBorder: 20px;
-        --headerLinkFontSize: 50px;
-        --projectPadding: 30px;
-        --projectBorder: 90px;
-        --projectInnerBorder: 60px;
-        --projectBorderMargin: 30px;
-        --projectBorderMarginHalf: 15px;
-        --projectToolIcon: 72px;
-        --projectTimeFrame: 42px;
-        --footerHeight: 200px;
+    .readSection {
+        flex-direction: column;
+    }
 
-        --h1FontSize: 60px;
-        --h2FontSize: 20px;
-        --pFontSize: 40px;
-        --projectLinkText: 40px;
+    .readSection > div {
+        width: auto;
+        order: 1;
+    }
+
+    .readSection > img {
+        width: auto;
+        height: auto;
+        order: 2;
+    }
+
+    .readSection > video {
+        width: auto;
+        height: auto;
+        order: 2;
+    }
+
+    :root {
+        --headerHeight: 30vw;
+        --headerBtn: 2vw;
+        --headerBtnBorder: 3vw;
+        --headerBtnFontSize: 6vw;
+        --headerLink: 2vw;
+        --headerLinkBorder: 3vw;
+        --headerLinkFontSize: 5vw;
+        --projectPadding: 3vw;
+        --projectBorder: 9vw;
+        --projectInnerBorder: 6vw;
+        --projectBorderMargin: 3vw;
+        --projectBorderMarginHalf: 1.5vw;
+        --projectToolIcon: 7.2vw;
+        --projectTimeFrame: 5vw;
+        --footerHeight: 20vw;
+
+        --h1FontSize: 6vw;
+        --h2FontSize: 5vw;
+        --pFontSize: 4vw;
+        --projectLinkText: 5vw;
+        --largeHeaderFontSize: 10vw;
     }
 }
 
@@ -434,8 +519,9 @@ footer {
         --footerHeight: 400px;
 
         --h1FontSize: 80px;
-        --h2FontSize: 40px;
+        --h2FontSize: 66px;
         --pFontSize: 40px;
         --projectLinkText: 40px;
+        --largeHeaderFontSize: 100px;
     }
 }
