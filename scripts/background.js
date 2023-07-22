@@ -71,6 +71,12 @@ function update() {
     }
     timeSinceLastUpdate = Date.now();
 
+    c.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+
+    if (html.clientWidth <= 1200) {
+        return;
+    }
+
     //console.log(height);
     height = Math.max(body.scrollHeight, body.offsetHeight,
         html.clientHeight, html.scrollHeight, html.offsetHeight);
@@ -85,8 +91,6 @@ function update() {
     trailParticles[currentParticle].pos.x = mouseOnPage.x;
     trailParticles[currentParticle].pos.y = mouseOnPage.y;
     currentParticle = (currentParticle + 1) % trailParticles.length;
-
-    c.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
 
     // Mouse tracer
     c.beginPath();
